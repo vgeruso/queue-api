@@ -1,0 +1,26 @@
+{
+  "user": [
+    {
+      "name": "geruso",
+      "email": "geruso@gmail.com",
+      "genre": "male",
+      "_id": 1
+    },
+    {
+      "name": "joao",
+      "email": "joao@gmail.com",
+      "genre": "male",
+      "_id": 2
+    }
+  ],
+  "queue": [
+    {
+      "userId": 1,
+      "position": 1
+    },
+    {
+      "userId": 2,
+      "position": 2
+    }
+  ]
+}
