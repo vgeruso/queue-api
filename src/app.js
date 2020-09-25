@@ -1,7 +1,7 @@
 import express from 'express';
 import route from './routes';
 
-class App {
+export default class App {
   constructor() {
     this.express = express();
 
@@ -17,5 +17,3 @@ class App {
     this.express.use('/api', route);
   }
 }
-
-export default new App().express;

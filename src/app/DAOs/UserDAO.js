@@ -1,7 +1,12 @@
 import lowdb from 'lowdb';
 import FileSync from 'lowdb/adapters/FileSync';
+import dotEnv from 'dotenv';
 
-const adapter = new FileSync('./src/db/database.json');
+dotEnv.config({
+  path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env',
+});
+
+const adapter = new FileSync(process.env.DB_FILE);
 const DB = lowdb(adapter);
 
 export default class UserDAO {

@@ -13,12 +13,19 @@ API for easy queue management.
 ```bash
 $ cd path/to/api-queue/
 $ yarn install
+$ yarn setup
 ```
 
 - Run the system
 
 ```bash
 $ yarn dev
+```
+
+or
+
+```bash
+$ yarn start
 ```
 
 ## Testing

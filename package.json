@@ -5,8 +5,13 @@
   "author": "victor geruso",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/server.js",
-    "dev:debug": "nodemon --inspect src/server.js"
+    "setup": "cd src/config/ && bash setup.sh",
+    "dev": "nodemon src/server.js --ignore __TESTS__",
+    "start": "node -r sucrase/register src/server.js",
+    "dev:debug": "nodemon --inspect src/server.js",
+    "pretest": "NODE_ENV=test cd src/config/ && bash setup-test.sh",
+    "test": "NODE_ENV=test jest",
+    "posttest": "NODE_ENV=test rm ./__TESTS__/database-test.json"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
