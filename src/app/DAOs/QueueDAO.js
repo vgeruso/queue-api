@@ -1,5 +1,6 @@
 import lowdb from 'lowdb';
 import FileSync from 'lowdb/adapters/FileSync';
+import dotEnv from 'dotenv';
 
 dotEnv.config({
   path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env',
