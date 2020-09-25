@@ -6,30 +6,35 @@ const DB = lowdb(adapter);
 
 export default class UserDAO {
   create(user) {
-    const users = DB.get('user').value();
+    const userVerify = DB.get('user').find({ email: user.email }).value();
 
-    let _id;
-    if (users.length === 0) {
-      user._id = 1;
-      _id = user._id;
-    } else {
-      const idPrev = users[users.length - 1]._id;
-      user._id = idPrev + 1;
-      _id = user._id;
-    }
+    if (userVerify === undefined) {
+      const users = DB.get('user').value();
 
-    DB.get('user').push(user).write();
-    const userFound = DB.get('user').find({ _id: _id }).value();
+      let _id;
+      if (users.length === 0) {
+        user._id = 1;
+        _id = user._id;
+      } else {
+        const idPrev = users[users.length - 1]._id;
+        user._id = idPrev + 1;
+        _id = user._id;
+      }
 
-    if (userFound != null) {
-      return {
-        user: userFound,
-        created: true,
-      };
+      DB.get('user').push(user).write();
+      const userFound = DB.get('user').find({ _id: _id }).value();
+
+      if (userFound != null) {
+        return {
+          user: userFound,
+          created: true,
+        };
+      }
     }
 
     return {
-      msg: 'error creating user',
+      msg: 'user with this email address already exists',
+      status: 406,
       created: false,
     };
   }
