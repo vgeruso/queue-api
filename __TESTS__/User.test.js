@@ -4,7 +4,7 @@ import faker from 'faker';
 describe('API user test', () => {
   const dao = new UserDAO();
 
-  test('create user', () => {
+  test('should create user', () => {
     const name = faker.name.findName();
     const user = {
       name,
